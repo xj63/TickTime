@@ -1,35 +1,19 @@
-# TickTime
+<div align="center">
+  <img src="https://github.com/xj63/TickTime/raw/main/public/ticktime.jpg" width="40%">
+</div>
 
-This template should help get you started developing with Vue 3 in Vite.
+<h1 align="center">TickTime</h1>
 
-## Recommended IDE Setup
+<div align="center">
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[![Web](https://img.shields.io/badge/Website-ticktime.xj63.fun-blue?style=flat-square&color=purple)](https://ticktime.xj63.fun)
+[![License](https://img.shields.io/github/license/xj63/TickTime?style=flat-square&label=License)](./LICENSE)
+![Language](https://img.shields.io/badge/Language-vue-lightgreen?style=flat-square)
+![Repo Stars](https://img.shields.io/github/stars/xj63/TickTime?style=flat-square&label=%E2%9C%A8%20Stars)
+[![Last Commit](https://img.shields.io/github/last-commit/xj63/PID?style=flat-square&label=%F0%9F%94%A5%20Last%20commit&color=orange)](https://github.com/xj63/PID/activity)
 
-## Customize configuration
+</div>
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+# Introduction
 
-## Project Setup
-
-```sh
-bun install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-bun dev
-```
-
-### Compile and Minify for Production
-
-```sh
-bun run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-bun lint
-```
+A application that *elegantly* displays the current **time** and an inspirational **quote**, designed to fit perfectly within any screen size.
