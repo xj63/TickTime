@@ -1,5 +1,11 @@
-<script setup></script>
+<template>
+  <TimeDisplay />
+  <QuoteDisplay />
+</template>
 
-<template>Hello World</template>
+<script setup>
+import TimeDisplay from "./components/TimeDisplay.vue";
+import QuoteDisplay from "./components/QuoteDisplay.vue";
+</script>
 
 <style scoped></style>
