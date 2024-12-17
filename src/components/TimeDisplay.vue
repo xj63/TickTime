@@ -1,14 +1,23 @@
 <template>
-  <div class="time">{{ currentTime }}</div>
+  <div class="time">{{ currentTimeFormatted }}</div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
-const currentTime = ref(new Date().toLocaleTimeString());
+const currentTime = ref(new Date());
+
+const currentTimeFormatted = computed(() => {
+  return currentTime.value.toLocaleTimeString("en-US", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+});
 
 setInterval(() => {
-  currentTime.value = new Date().toLocaleTimeString();
+  currentTime.value = new Date();
 }, 1000);
 </script>
 
