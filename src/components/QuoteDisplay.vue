@@ -12,7 +12,6 @@ const quote = ref(defaultQuote);
 <style scoped>
 .quote {
   font-size: 1.5em;
-  margin-top: 1em;
   color: #666;
 }
 </style>
