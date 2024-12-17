@@ -14,7 +14,8 @@ setInterval(() => {
 
 <style scoped>
 .time {
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Courier New", "Lucida Console", "Monaco", "Consolas", monospace,
+    "Helvetica", "Arial", sans-serif;
   font-size: calc(16vw);
   font-weight: bold;
   text-align: center;
