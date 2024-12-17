@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/github/license/xj63/TickTime?style=flat-square&label=License)](./LICENSE)
 ![Language](https://img.shields.io/badge/Language-vue-lightgreen?style=flat-square)
 ![Repo Stars](https://img.shields.io/github/stars/xj63/TickTime?style=flat-square&label=%E2%9C%A8%20Stars)
-[![Last Commit](https://img.shields.io/github/last-commit/xj63/PID?style=flat-square&label=%F0%9F%94%A5%20Last%20commit&color=orange)](https://github.com/xj63/PID/activity)
+[![Last Commit](https://img.shields.io/github/last-commit/xj63/TickTime?style=flat-square&label=%F0%9F%94%A5%20Last%20commit&color=orange)](https://github.com/xj63/TickTime/activity)
 
 </div>
 
