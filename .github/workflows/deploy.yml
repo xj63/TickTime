@@ -30,7 +30,7 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Deploy to cf-pages
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
