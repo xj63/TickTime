@@ -14,7 +14,9 @@ setInterval(() => {
 
 <style scoped>
 .time {
-  font-size: 5em;
+  font-size: calc(16vw);
   font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
 }
 </style>
