@@ -6,11 +6,11 @@ body {
 }
 
 html {
-  background-color: #f0f0f0;
+  background-color: #fff;
   color: #000;
 }
 
 html.dark {
-  background-color: #121212;
+  background-color: #000;
   color: #fff;
 }
