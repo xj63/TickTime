@@ -8,6 +8,7 @@
       class="note-input"
       placeholder="Add a note"
       :contenteditable="true"
+      @input="$emit('update-note', note)"
     />
     <DeleteButton @click="$emit('remove')" />
   </li>
