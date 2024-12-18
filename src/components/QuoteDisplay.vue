@@ -16,10 +16,18 @@ import { ref, watchEffect, onMounted } from "vue";
 const defaultQuote = "The best way to predict the future is to create it.";
 const quote = ref("");
 
+function isAtLeastOneWhitespaceOnly(str) {
+  return str.length > 0 && /^\s+$/.test(str);
+}
+
 const deleteQuote = () => (quote.value = "");
-const updateQuote = (event) =>
-  (quote.value = event.target.innerText.trim() || defaultQuote);
 const handleEnter = (event) => event.target.blur();
+const updateQuote = (event) => {
+  const text = event.target.innerText;
+  quote.value = isAtLeastOneWhitespaceOnly(text)
+    ? ""
+    : text.trim() || defaultQuote;
+};
 
 const updateUrl = (newQuote) => {
   const queryParams = new URLSearchParams(window.location.search);
