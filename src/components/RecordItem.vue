@@ -68,7 +68,7 @@ const diffFormat = computed(() => {
 
 .note-input {
   flex: 1;
-  font-size: calc(1vw);
+  font-size: 0.8em;
   color: #666;
   white-space: nowrap;
   overflow: hidden;
