@@ -11,17 +11,28 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watchEffect, onMounted } from "vue";
 
 const defaultQuote = "The best way to predict the future is to create it.";
 const quote = ref(defaultQuote);
 
 const deleteQuote = () => (quote.value = "");
-const updateQuote = (event) => {
-  quote.value = event.target.innerText.trim() || defaultQuote;
+const updateQuote = (event) =>
+  (quote.value = event.target.innerText.trim() || defaultQuote);
+const handleEnter = (event) => event.target.blur();
+
+const updateUrl = (newQuote) => {
+  const queryParams = new URLSearchParams(window.location.search);
+  queryParams.set("quote", newQuote);
+  const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
+  window.history.replaceState({}, "", newUrl);
 };
 
-const handleEnter = (event) => event.target.blur();
+onMounted(() => {
+  const queryParams = new URLSearchParams(window.location.search);
+  if (queryParams.has("quote")) quote.value = queryParams.get("quote");
+  watchEffect(() => updateUrl(quote.value));
+});
 </script>
 
 <style scoped>
