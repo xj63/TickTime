@@ -47,25 +47,11 @@ defineExpose({ addRecord, isEmpty });
   max-height: 40vh;
   overflow-y: auto;
   scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 .records-list::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-
-.records-list::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.records-list::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-}
-
-.records-list {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+  display: none;
 }
 
 .clear-button-container {
