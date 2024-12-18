@@ -46,14 +46,14 @@ main {
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   main {
     flex-direction: row;
   }
 }
 
 aside {
-  margin: 2em;
+  margin: 1em;
 }
 
 footer {

@@ -118,7 +118,6 @@ defineExpose({ addRecord, isEmpty });
 <style scoped>
 .time-records {
   text-align: center;
-  margin: 2em;
   max-width: 600px;
 }
 

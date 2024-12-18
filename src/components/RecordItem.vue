@@ -48,22 +48,20 @@ const diffFormat = computed(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.4em;
 }
 
 .time {
   font-weight: bold;
   color: #333;
-  margin-right: 1em;
+  margin-right: 0.4em;
 }
 
 .diff {
   color: green;
   font-size: 0.8em;
-  width: 60px;
   text-align: right;
-  margin-right: 2em;
+  margin-right: 0.8em;
 }
 
 .note-input {
@@ -74,7 +72,6 @@ const diffFormat = computed(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
-  margin-right: 1em;
   cursor: text;
   border: 1px solid transparent;
   background-color: transparent;
@@ -82,8 +79,6 @@ const diffFormat = computed(() => {
 
 .note-input:focus {
   outline: none;
-  border: 1px solid #007bff;
-  background-color: #fff;
 }
 
 .note-input::placeholder {
@@ -105,10 +100,5 @@ html.dark .diff {
 html.dark .note-input {
   color: #ddd;
   background-color: transparent;
-}
-
-html.dark .note-input:focus {
-  border: 1px solid #555;
-  background-color: #444;
 }
 </style>

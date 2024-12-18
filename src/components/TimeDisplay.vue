@@ -40,7 +40,7 @@ setInterval(() => {
     transform 0.5s ease-in-out;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .time.small {
     font-size: calc(12vw);
   }
