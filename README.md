@@ -20,4 +20,7 @@ A application that *elegantly* displays the current **time** and an inspirationa
 
 Just feel it. [website](https://ticktime.xj63.fun/?quote=Click+here+to+edit+quote.&records=2024-12-18T13.41.50Z_Click+here+to+edit+notes.%7E2024-12-18T13.43.26Z_All+the+data+is+stored+in+the+URL+link.%7E2024-12-18T13.44.49Z_You+can+share+this+link+to+your+friends+to+get+the+same+page.%7E2024-12-18T13.46.02Z%7E2024-12-18T13.46.03Z_Click+right+time+to+add+snap.)
 
-![TickTime complex](https://github.com/xj63/TickTime/raw/main/docs.assets/complex.png)
+<div style="display: flex; align-items: center;">
+  <img src="https://github.com/xj63/TickTime/raw/main/docs.assets/complex.png" alt="TickTime complex" height="200">
+  <img src="https://github.com/xj63/TickTime/raw/main/docs.assets/complex-mobile.png" alt="TickTime complex mobile" height="200">
+</div>
