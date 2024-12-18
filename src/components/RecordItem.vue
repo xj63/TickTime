@@ -36,10 +36,12 @@ const timeFormat = computed(() => {
 });
 
 const diffFormat = computed(() => {
-  const hours = String(Math.floor(props.diff / 3600)).padStart(2, '0');
-  const minutes = String(Math.floor((props.diff % 3600) / 60)).padStart(2, '0');
-  const seconds = String(props.diff % 60).padStart(2, '0');
-  return props.diff > 0 ? `+${hours}:${minutes}:${seconds}` : "";
+  if (props.diff <= 0) return "";
+  const diff = props.diff / 1000;
+  const hours = String(Math.floor(diff / 3600)).padStart(2, "0");
+  const minutes = String(Math.floor((diff % 3600) / 60)).padStart(2, "0");
+  const seconds = String(diff % 60).padStart(2, "0");
+  return `+${hours}:${minutes}:${seconds}`;
 });
 </script>
 
