@@ -46,7 +46,7 @@ const parseRecord = (recordStr) => {
 
 const updateUrl = () => {
   const queryParams = new URLSearchParams(window.location.search);
-  const formattedRecords = records.value.map(formatRecord).join("~");
+  const formattedRecords = records.value.map(formatRecord).join("|");
   if (records.value.length === 0) queryParams.delete("records");
   else queryParams.set("records", formattedRecords);
   const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
@@ -59,7 +59,7 @@ const initializeRecordsFromUrl = () => {
     const recordsStr = queryParams.get("records");
     try {
       const parsedRecords = recordsStr
-        .split("~")
+        .split("|")
         .map(parseRecord)
         .filter((record) => record !== null);
       if (parsedRecords.length > 0) {
