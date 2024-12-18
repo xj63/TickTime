@@ -37,7 +37,7 @@ const timeFormat = computed(() => {
 
 const diffFormat = computed(() => {
   if (props.diff <= 0) return "";
-  const diff = props.diff / 1000;
+  const diff = Math.floor(props.diff / 1000);
   const hours = String(Math.floor(diff / 3600)).padStart(2, "0");
   const minutes = String(Math.floor((diff % 3600) / 60)).padStart(2, "0");
   const seconds = String(diff % 60).padStart(2, "0");
