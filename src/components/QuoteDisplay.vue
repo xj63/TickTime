@@ -57,7 +57,7 @@ const updateUrl = (newQuote) => {
   const queryParams = new URLSearchParams(window.location.search);
   queryParams.set("quote", newQuote);
   const path = window.location.pathname.replace(/\/$/, "");
-  const para = queryParams.toString().replace(/=$/, "");
+  const para = queryParams.toString().replace(/=&/, "&").replace(/=$/, "");
   const newUrl = `${path}?${para}`;
   window.history.replaceState({}, "", newUrl);
 };
