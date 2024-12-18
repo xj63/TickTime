@@ -14,11 +14,13 @@
 
 </div>
 
-# Introduction
-
 A application that _elegantly_ displays the current **time** and an inspirational **quote**, designed to fit perfectly within any screen size.
 
-Just feel it. [website](https://ticktime.xj63.fun/?quote=Click+here+to+edit+quote.&records=2024-12-18T13.41.50Z_Click+here+to+edit+notes.%7E2024-12-18T13.43.26Z_All+the+data+is+stored+in+the+URL+link.%7E2024-12-18T13.44.49Z_You+can+share+this+link+to+your+friends+to+get+the+same+page.%7E2024-12-18T13.46.02Z%7E2024-12-18T13.46.03Z_Click+right+time+to+add+snap.)
+## Preview
+
+Just feel it.
+[website.complex](https://ticktime.xj63.fun/?quote=Click+here+to+edit+quote.&records=2024-12-18T13.41.50Z_Click+here+to+edit+notes.|2024-12-18T13.43.26Z_All+the+data+is+stored+in+the+URL+link.|2024-12-18T13.44.49Z_You+can+share+this+link+to+your+friends+to+get+the+same+page.|2024-12-18T13.46.02Z|2024-12-18T13.46.03Z_Click+right+time+to+add+snap.)
+[website.simple](https://ticktime.xj63.fun)
 
 <table>
   <tr>
@@ -32,3 +34,39 @@ Just feel it. [website](https://ticktime.xj63.fun/?quote=Click+here+to+edit+quot
     <td><img src="https://github.com/xj63/TickTime/raw/main/docs.assets/simple-mobile.png" style="max-width: 100%; height: auto;" alt="simple mobile"></td>
   </tr>
 </table>
+
+## Features
+
+- Displays current time and an inspirational quote.
+- Fully responsive design for any screen size.
+- Easy to customize the quote and share it with others.
+- URL is all. Records the time and quote in the URL link.
+
+## API Description
+
+### URL Parameters
+
+- `quote`: The quote to display. This parameter allows users to customize the quote shown on the bottom.
+- `records`: Encoded data containing notes and timestamps. This data is stored in the URL and can be shared with others to reproduce the same page.
+
+format: `YYYY-MM-DDThh.mm.ssZ{_note}` Z is UTC time zone. use `|` to split snapshots.
+
+### Example URL
+
+```url
+https://ticktime.xj63.fun/?quote=Click+here+to+edit+quote.&records=2024-12-18T15.51.22Z|2024-12-18T15.51.24Z_hello
+```
+
+```
+quote=Click+here+to+edit+quote. # bottom show quote: 'Click here to edit quote.'
+records=2024-12-18T15.51.22Z|2024-12-18T15.51.24Z_hello # timesnap data
+```
+
+| time                 | note  |
+| -------------------- | ----- |
+| 2024-12-18T15.51.22Z |       |
+| 2024-12-18T15.51.24Z | hello |
+
+# Contributing Quotes
+
+We welcome contributions to our quotes collection! Please add your favorite quotes to the public/quotes.txt file. PR/Issue are most welcome.
