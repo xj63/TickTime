@@ -34,6 +34,7 @@ setInterval(() => {
   text-align: center;
   margin: 0 auto;
   cursor: pointer;
+  user-select: none;
   transition:
     font-size 0.5s ease-in-out,
     transform 0.5s ease-in-out;
