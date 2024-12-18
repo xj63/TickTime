@@ -14,7 +14,7 @@
 import { ref, watchEffect, onMounted } from "vue";
 
 const defaultQuote = "The best way to predict the future is to create it.";
-const quote = ref(defaultQuote);
+const quote = ref("");
 
 const deleteQuote = () => (quote.value = "");
 const updateQuote = (event) =>
@@ -24,13 +24,16 @@ const handleEnter = (event) => event.target.blur();
 const updateUrl = (newQuote) => {
   const queryParams = new URLSearchParams(window.location.search);
   queryParams.set("quote", newQuote);
-  const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
+  const path = window.location.pathname.replace(/\/$/, "");
+  const para = queryParams.toString().replace(/=$/, "");
+  const newUrl = `${path}?${para}`;
   window.history.replaceState({}, "", newUrl);
 };
 
 onMounted(() => {
   const queryParams = new URLSearchParams(window.location.search);
   if (queryParams.has("quote")) quote.value = queryParams.get("quote");
+  else quote.value = defaultQuote;
   watchEffect(() => updateUrl(quote.value));
 });
 </script>
