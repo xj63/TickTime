@@ -93,7 +93,23 @@ const diffFormat = computed(() => {
 
 @media (max-width: 240px) {
   .note-input {
-    max-width: 0;
+    display: none;
+  }
+}
+
+@media (max-width: 190px) {
+  .diff {
+    display: none;
+  }
+}
+
+@media (max-width: 110px) {
+  .time {
+    font-size: calc(12vw);
+  }
+
+  .delete-btn {
+    display: none;
   }
 }
 

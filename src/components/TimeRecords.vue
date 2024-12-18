@@ -1,9 +1,15 @@
 <template>
   <div class="time-records">
     <ul class="records-list" ref="recordList">
-      <RecordItem v-for="(record, index) in records" :key="record.time" :time="record.time"
-        :diff="timediff(record, records[index - 1])" :note="record.note" @remove="removeRecord(index)"
-        @update-note="updateRecordNote(index, $event)" />
+      <RecordItem
+        v-for="(record, index) in records"
+        :key="record.time"
+        :time="record.time"
+        :diff="timediff(record, records[index - 1])"
+        :note="record.note"
+        @remove="removeRecord(index)"
+        @update-note="updateRecordNote(index, $event)"
+      />
     </ul>
     <div class="clear-button-container">
       <DeleteButton @click="clearRecords" />
@@ -154,6 +160,12 @@ defineExpose({ addRecord, isEmpty });
 
   .clear-button-container {
     margin-top: 0px;
+  }
+}
+
+@media (max-height: 140px) {
+  .clear-button-container {
+    display: none;
   }
 }
 </style>
