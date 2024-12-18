@@ -13,8 +13,32 @@
 <script setup>
 import { ref, watchEffect, onMounted } from "vue";
 
-const defaultQuote = "The best way to predict the future is to create it.";
 const quote = ref("");
+
+const quotes = [
+  "The best way to predict the future is to create it.",
+  "The only way to do great work is to love what you do.",
+  "Life is 10% what happens to us and 90% how we react to it.",
+  "The only limit to our realization of tomorrow is our doubts of today.",
+  "The purpose of our lives is to be happy.",
+  "Get busy living or get busy dying.",
+];
+
+const randomQuote = () => quotes[Math.floor(Math.random() * quotes.length)];
+async function fetchQuotes() {
+  try {
+    const response = await fetch("/quotes.txt");
+    const text = await response.text();
+    const newQuotes = text
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0);
+    quotes.push(...newQuotes);
+  } catch (error) {
+    console.error("Error fetching quotes:", error);
+  }
+}
+fetchQuotes();
 
 function isAtLeastOneWhitespaceOnly(str) {
   return str.length > 0 && /^\s+$/.test(str);
@@ -26,7 +50,7 @@ const updateQuote = (event) => {
   const text = event.target.innerText;
   quote.value = isAtLeastOneWhitespaceOnly(text)
     ? ""
-    : text.trim() || defaultQuote;
+    : text.trim() || randomQuote();
 };
 
 const updateUrl = (newQuote) => {
@@ -41,7 +65,7 @@ const updateUrl = (newQuote) => {
 onMounted(() => {
   const queryParams = new URLSearchParams(window.location.search);
   if (queryParams.has("quote")) quote.value = queryParams.get("quote");
-  else quote.value = defaultQuote;
+  else quote.value = randomQuote();
   watchEffect(() => updateUrl(quote.value));
 });
 </script>
