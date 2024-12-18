@@ -67,6 +67,36 @@ records=2024-12-18T15.51.22Z|2024-12-18T15.51.24Z_hello # timesnap data
 | 2024-12-18T15.51.22Z |       |
 | 2024-12-18T15.51.24Z | hello |
 
+## Deploy
+
+You can fork this project and deploy it on [GitHub Pages](https://pages.github.com/).
+
+**Notice**: ensure that the base url is right.
+```js
+// file ./vite.config.js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueDevTools from 'vite-plugin-vue-devtools'
+
+// https://vite.dev/config/
+export default defineConfig({
+  base: '/your-base-url/', // set your base url in here, example is your project name.
+  plugins: [
+    vue(),
+    vueDevTools(),
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+  },
+})
+```
+
+`./.github/workflows/deploy.yml` is the workflow to run `bun run build` to branch gh-pages.
+
+Set github project config gh-pages to github pages.
+
 # Contributing Quotes
 
 We welcome contributions to our quotes collection! Please add your favorite quotes to the public/quotes.txt file. PR/Issue are most welcome.
