@@ -140,4 +140,20 @@ defineExpose({ addRecord, isEmpty });
   justify-content: center;
   margin-top: 20px;
 }
+
+@media (max-width: 360px) {
+  .time-records {
+    max-width: 100%;
+  }
+}
+
+@media (max-height: 576px) {
+  .records-list {
+    max-height: 35vh;
+  }
+
+  .clear-button-container {
+    margin-top: 0px;
+  }
+}
 </style>

@@ -56,12 +56,17 @@ aside {
   margin: 2em;
 }
 
+@media (max-height: 576px) {
+  aside {
+    margin: 0em;
+  }
+}
+
 footer {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  margin-bottom: 1em;
 }
 </style>

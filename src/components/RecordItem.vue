@@ -64,19 +64,37 @@ const diffFormat = computed(() => {
   font-size: 0.8em;
   text-align: right;
   margin-right: 0.8em;
+  min-width: 5em;
 }
 
 .note-input {
-  flex: 1;
+  flex: 1 1 auto;
   font-size: 0.8em;
   color: #666;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
   cursor: text;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   background-color: transparent;
+}
+
+@media (max-width: 360px) {
+  .note-input {
+    max-width: 30vw;
+  }
+}
+
+@media (max-width: 280px) {
+  .note-input {
+    max-width: 20vw;
+  }
+}
+
+@media (max-width: 240px) {
+  .note-input {
+    max-width: 0;
+  }
 }
 
 .note-input:focus {
