@@ -1,8 +1,12 @@
 <template>
-  <div class="time">{{ currentTimeFormatted }}</div>
+  <div class="time" :class="{ small }">{{ currentTimeFormatted }}</div>
 </template>
 
 <script setup>
+defineProps({
+  small: { type: Boolean, default: false },
+});
+
 import { ref, computed } from "vue";
 
 const currentTime = ref(new Date());
@@ -29,5 +33,15 @@ setInterval(() => {
   font-weight: bold;
   text-align: center;
   margin: 0 auto;
+  cursor: pointer;
+  transition:
+    font-size 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .time.small {
+    font-size: calc(12vw);
+  }
 }
 </style>

@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <main>
-      <TimeDisplay />
+      <TimeDisplay @click="addTimeRecord" :small="RecordsNotEmpty" />
+      <aside>
+        <TimeRecords ref="records" v-show="RecordsNotEmpty" />
+      </aside>
     </main>
     <footer>
       <QuoteDisplay />
@@ -10,8 +13,18 @@
 </template>
 
 <script setup>
+import { useTemplateRef, computed } from "vue";
+import TimeRecords from "./components/TimeRecords.vue";
 import TimeDisplay from "./components/TimeDisplay.vue";
 import QuoteDisplay from "./components/QuoteDisplay.vue";
+
+const childRecords = useTemplateRef("records");
+const addTimeRecord = () => {
+  if (childRecords.value) childRecords.value.addRecord();
+};
+const RecordsNotEmpty = computed(() =>
+  childRecords.value ? !childRecords.value.isEmpty : false,
+);
 </script>
 
 <style scoped>
@@ -29,7 +42,18 @@ main {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  flex-direction: column;
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  main {
+    flex-direction: row;
+  }
+}
+
+aside {
+  margin: 2em;
 }
 
 footer {
