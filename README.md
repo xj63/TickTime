@@ -28,7 +28,7 @@ Just feel it. [website](https://ticktime.xj63.fun/?quote=Click+here+to+edit+quot
 </table>
 <table>
   <tr>
-    <td><img src="https://github.com/xj63/TickTime/raw/main/docs.assets/sample.png" style="max-width: 100%; height: auto;" alt="sample"></td>
-    <td><img src="https://github.com/xj63/TickTime/raw/main/docs.assets/sample-mobile.png" style="max-width: 100%; height: auto;" alt="sample mobile"></td>
+    <td><img src="https://github.com/xj63/TickTime/raw/main/docs.assets/simple.png" style="max-width: 100%; height: auto;" alt="simple"></td>
+    <td><img src="https://github.com/xj63/TickTime/raw/main/docs.assets/simple-mobile.png" style="max-width: 100%; height: auto;" alt="simple mobile"></td>
   </tr>
 </table>
