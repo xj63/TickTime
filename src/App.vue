@@ -53,7 +53,7 @@ main {
 }
 
 aside {
-  margin: 1em;
+  margin: 2em;
 }
 
 footer {
