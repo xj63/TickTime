@@ -1,15 +1,9 @@
 <template>
   <div class="time-records">
     <ul class="records-list" ref="recordList">
-      <RecordItem
-        v-for="(record, index) in records"
-        :key="record.time"
-        :time="record.time"
-        :diff="timediff(record, records[index - 1])"
-        :note="record.note"
-        @remove="removeRecord(index)"
-        @update-note="updateRecordNote(index, $event)"
-      />
+      <RecordItem v-for="(record, index) in records" :key="record.time" :time="record.time"
+        :diff="timediff(record, records[index - 1])" :note="record.note" @remove="removeRecord(index)"
+        @update-note="updateRecordNote(index, $event)" />
     </ul>
     <div class="clear-button-container">
       <DeleteButton @click="clearRecords" />
@@ -26,8 +20,6 @@ const records = ref([]);
 const recordList = ref(null);
 
 const timediff = (now, last) => (last ? now.time - last.time : 0);
-
-const removeRecord = (index) => records.value.splice(index, 1);
 
 const scrollToBottom = () => {
   if (recordList.value) {
@@ -88,6 +80,11 @@ const initializeRecordsFromUrl = () => {
       window.history.replaceState({}, "", newUrl);
     }
   }
+};
+
+const removeRecord = (index) => {
+  records.value.splice(index, 1);
+  updateUrl()
 };
 
 const updateRecordNote = (index, newNote) => {
