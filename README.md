@@ -38,6 +38,7 @@ Just feel it.
 ## Features
 
 - Displays current time and an inspirational quote.
+- Random quote generation from `public/quotes.txt`.
 - Fully responsive design for any screen size.
 - Easy to customize the quote and share it with others.
 - URL is all. Records the time and quote in the URL link.
