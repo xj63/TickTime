@@ -51,6 +51,9 @@ FCYAN = Color.fg("cyan")
 BRED = Color.bg("red")
 
 
+def PRED(text):
+    return BRED(FRED(text))
+
 
 def highlight_spaces(line):
     """
@@ -65,9 +68,9 @@ def highlight_spaces(line):
     leading_spaces = len(line) - len(line.lstrip())
     trailing_spaces = len(line) - len(line.rstrip())
     return (
-        BRED(line[:leading_spaces])
+        PRED(line[:leading_spaces].replace(" ", "-"))
         + line[leading_spaces : len(line) - trailing_spaces]
-        + BRED(line[len(line) - trailing_spaces :])
+        + PRED(line[len(line) - trailing_spaces :].replace(" ", "-"))
     )
 
 
