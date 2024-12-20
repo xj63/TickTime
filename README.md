@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/xj63/TickTime/raw/main/public/ticktime.jpg" width="40%">
+  <img src="https://github.com/xj63/TickTime/raw/main/docs.assets/ticktime.jpg" width="40%">
 </div>
 
 <h1 align="center">TickTime</h1>
