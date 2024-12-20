@@ -40,38 +40,4 @@ jobs:
         env:
           TERM: xterm-256color
         run: |
-          python3 <<EOF
-          file_path = 'public/quotes.txt'
-
-          try:
-              with open(file_path, 'r') as file:
-                  lines = file.readlines()
-          except FileNotFoundError:
-              print("\033[1;33mFile public/quotes.txt not found. Skipping check.\033[0m")
-              exit(0)
-          
-          print("\033[1;34mAnalyzing public/quotes.txt for whitespace issues...\033[0m")
-          
-          whitespace_issues = []
-          for i, line in enumerate(lines, start=1):
-              stripped_line = line.rstrip('\n')  # Remove only the newline character for analysis
-              if stripped_line.startswith(" ") or stripped_line.endswith(" "):
-                  leading_spaces = len(stripped_line) - len(stripped_line.lstrip(' '))
-                  trailing_spaces = len(stripped_line) - len(stripped_line.rstrip(' '))
-                  highlighted_line = stripped_line
-                  if leading_spaces > 0:
-                      highlighted_line = f"\033[1;41;31m{'.' * leading_spaces}\033[0m" + highlighted_line.lstrip()
-                  if trailing_spaces > 0:
-                      highlighted_line = highlighted_line.rstrip() + f"\033[1;41;31m{'.' * trailing_spaces}\033[0m"
-                  whitespace_issues.append((i, highlighted_line))
-
-          if whitespace_issues:
-              print("\033[1;31mWhitespace issues found in public/quotes.txt.\033[0m")
-              print("\033[1;33mLines with leading or trailing whitespace:\033[0m")
-              for line_num, content in whitespace_issues:
-                  print(f"Line {line_num}: \"{content}\"")
-              exit(1)
-          else:
-              print("\033[1;32mNo whitespace issues found in public/quotes.txt.\033[0m")
-          EOF
-
+          python3 script/check-quotes-trim.py
