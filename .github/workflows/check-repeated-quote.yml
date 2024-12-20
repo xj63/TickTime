@@ -1,6 +1,7 @@
 name: Check for Duplicates in Quotes File
 
 on:
+  pull_request:
   push:
     branches-ignore:
       - gh-pages
