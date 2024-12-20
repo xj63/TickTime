@@ -40,27 +40,37 @@ jobs:
         env:
           TERM: xterm-256color
         run: |
-          if [ -f public/quotes.txt ]; then
-            echo -e "\033[1;34mAnalyzing public/quotes.txt for whitespace issues...\033[0m"
-      
-            # Search for leading or trailing whitespace
-            whitespace_issues=$(grep -En "^[[:space:]]+|[[:space:]]+$" public/quotes.txt)
-            if [ -n "$whitespace_issues" ]; then
-              echo -e "\033[1;31mWhitespace issues found in public/quotes.txt.\033[0m"
-              echo -e "\033[1;33mLines with leading or trailing whitespace:\033[0m"
-              echo "$whitespace_issues" | while IFS= read -r line; do
-                line_number=$(echo "$line" | cut -d: -f1)
-                content=$(echo "$line" | cut -d: -f2-)
-                # Highlight leading and trailing whitespace in red background
-                highlighted_content=$(echo "$content" | sed -E $'s/^([[:space:]]+)/\033[1;41m\\1\033[0m/; s/([[:space:]]+)$/\033[1;41m\\1\033[0m/')
-                # Properly output highlighted line
-                echo -e "\033[1;31mLine $line_number:\033[0m \"$highlighted_content\""
-              done
-              exit 1
-            else
-              echo -e "\033[1;32mNo whitespace issues found in public/quotes.txt.\033[0m"
-            fi
-          else
-            echo -e "\033[1;33mFile public/quotes.txt not found. Skipping check.\033[0m"
-          fi
-          
+          python3 <<EOF
+          import re
+          import sys
+
+          file_path = 'public/quotes.txt'
+
+          try:
+              with open(file_path, 'r') as file:
+                  lines = file.readlines()
+          except FileNotFoundError:
+              print("\033[1;33mFile public/quotes.txt not found. Skipping check.\033[0m")
+              sys.exit(0)
+
+          print("\033[1;34mAnalyzing public/quotes.txt for whitespace issues...\033[0m")
+
+          whitespace_issues = []
+          for i, line in enumerate(lines, start=1):
+              leading_spaces = len(line) - len(line.lstrip())
+              trailing_spaces = len(line) - len(line.rstrip())
+
+              if leading_spaces > 0 or trailing_spaces > 0:
+                  highlighted_line = re.sub(r'^\s+', lambda m: f"\033[1;41;31m{'.' * len(m.group(0))}\033[0m", line)
+                  highlighted_line = re.sub(r'\s+$', lambda m: f"\033[1;41;31m{'.' * len(m.group(0))}\033[0m", highlighted_line)
+                  whitespace_issues.append((i, highlighted_line.strip()))
+
+          if whitespace_issues:
+              print("\033[1;31mWhitespace issues found in public/quotes.txt.\033[0m")
+              print("\033[1;33mLines with leading or trailing whitespace:\033[0m")
+              for line_num, content in whitespace_issues:
+                  print(f"Line {line_num}: \"{content}\"")
+              sys.exit(1)
+          else:
+              print("\033[1;32mNo whitespace issues found in public/quotes.txt.\033[0m")
+          EOF
