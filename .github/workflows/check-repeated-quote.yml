@@ -1,0 +1,31 @@
+name: Check for Duplicates in Quotes File
+
+on:
+  push:
+    branches-ignore:
+      - gh-pages
+    paths:
+      - 'public/quotes.txt'
+
+jobs:
+  check-duplicates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for duplicate lines in quotes.txt
+        run: |
+          if [ -f public/quotes.txt ]; then
+            duplicates=$(sort public/quotes.txt | uniq -d)
+            if [ -n "$duplicates" ]; then
+              echo "Duplicate lines found in public/quotes.txt:"
+              echo "$duplicates"
+              exit 1
+            else
+              echo "No duplicate lines found in public/quotes.txt."
+            fi
+          else
+            echo "File public/quotes.txt not found. Skipping check."
+          fi
