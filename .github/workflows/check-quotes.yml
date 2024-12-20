@@ -37,6 +37,8 @@ jobs:
           fi
 
       - name: Check for whitespace issues in quotes.txt
+        env:
+          TERM: xterm-256color
         run: |
           if [ -f public/quotes.txt ]; then
             echo -e "\033[1;34mAnalyzing public/quotes.txt for whitespace issues...\033[0m"
