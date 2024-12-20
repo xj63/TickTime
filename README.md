@@ -1,3 +1,7 @@
+<p align="right">
+  English / <a href="./README.zh-CN.md">简体中文</a>
+</p>
+
 <div align="center">
   <img src="https://github.com/xj63/TickTime/raw/main/docs.assets/ticktime.jpg" width="40%">
 </div>
