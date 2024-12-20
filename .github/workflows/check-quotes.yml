@@ -39,9 +39,6 @@ jobs:
       - name: Check for whitespace issues in quotes.txt
         run: |
           python3 <<EOF
-          import re
-          import sys
-
           file_path = 'public/quotes.txt'
 
           try:
@@ -49,26 +46,30 @@ jobs:
                   lines = file.readlines()
           except FileNotFoundError:
               print("\033[1;33mFile public/quotes.txt not found. Skipping check.\033[0m")
-              sys.exit(0)
-
+              exit(0)
+          
           print("\033[1;34mAnalyzing public/quotes.txt for whitespace issues...\033[0m")
-
+          
           whitespace_issues = []
           for i, line in enumerate(lines, start=1):
-              leading_spaces = len(line) - len(line.lstrip())
-              trailing_spaces = len(line) - len(line.rstrip())
-
-              if leading_spaces > 0 or trailing_spaces > 0:
-                  highlighted_line = re.sub(r'^\s+', lambda m: f"\033[1;41;31m{'.' * len(m.group(0))}\033[0m", line)
-                  highlighted_line = re.sub(r'\s+$', lambda m: f"\033[1;41;31m{'.' * len(m.group(0))}\033[0m", highlighted_line)
-                  whitespace_issues.append((i, highlighted_line.strip()))
+              stripped_line = line.rstrip('\n')  # Remove only the newline character for analysis
+              if stripped_line.startswith(" ") or stripped_line.endswith(" "):
+                  leading_spaces = len(stripped_line) - len(stripped_line.lstrip(' '))
+                  trailing_spaces = len(stripped_line) - len(stripped_line.rstrip(' '))
+                  highlighted_line = stripped_line
+                  if leading_spaces > 0:
+                      highlighted_line = f"\033[1;41;31m{'.' * leading_spaces}\033[0m" + highlighted_line.lstrip()
+                  if trailing_spaces > 0:
+                      highlighted_line = highlighted_line.rstrip() + f"\033[1;41;31m{'.' * trailing_spaces}\033[0m"
+                  whitespace_issues.append((i, highlighted_line))
 
           if whitespace_issues:
               print("\033[1;31mWhitespace issues found in public/quotes.txt.\033[0m")
               print("\033[1;33mLines with leading or trailing whitespace:\033[0m")
               for line_num, content in whitespace_issues:
                   print(f"Line {line_num}: \"{content}\"")
-              sys.exit(1)
+              exit(1)
           else:
               print("\033[1;32mNo whitespace issues found in public/quotes.txt.\033[0m")
           EOF
+
