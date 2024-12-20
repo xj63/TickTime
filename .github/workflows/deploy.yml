@@ -32,7 +32,41 @@ jobs:
       - name: Build project
         run: bun run build
 
+      - name: Generate hash for build result
+        run: |
+          find ./dist -type f -exec sha256sum {} \; | sha256sum > dist.hash
+        shell: bash
+
+      - name: Fetch gh-pages branch
+        run: |
+          git fetch origin gh-pages
+          git checkout origin/gh-pages || echo "gh-pages branch does not exist yet"
+        shell: bash
+
+      - name: Compare hashes
+        id: compare
+        run: |
+          if [ -f hash.txt ]; then
+            if cmp -s dist.hash hash.txt; then
+              echo "No changes in build output. Skipping deployment."
+              echo "deploy=false" >> $GITHUB_ENV
+            else
+              echo "Build output has changed. Proceeding with deployment."
+              echo "deploy=true" >> $GITHUB_ENV
+            fi
+          else
+            echo "No previous hash found. Proceeding with deployment."
+            echo "deploy=true" >> $GITHUB_ENV
+          fi
+        shell: bash
+
+      - name: Save new hash for future comparisons
+        if: env.deploy == 'true'
+        run: |
+          cp dist.hash ./dist/hash.txt
+
       - name: Deploy to gh-pages
+        if: env.deploy == 'true'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
