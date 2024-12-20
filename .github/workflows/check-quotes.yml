@@ -37,7 +37,5 @@ jobs:
           fi
 
       - name: Check for whitespace issues in quotes.txt
-        env:
-          TERM: xterm-256color
         run: |
           python3 script/check-quotes-trim.py
