@@ -1,11 +1,15 @@
 <template>
-  <div class="time" :class="{ small }">{{ currentTimeFormatted }}</div>
+  <div class="time" :class="{ small }" @click="$emit('click')">
+    {{ currentTimeFormatted }}
+  </div>
 </template>
 
 <script setup>
 defineProps({
   small: { type: Boolean, default: false },
 });
+
+defineEmits(["click"]);
 
 import { ref, computed } from "vue";
 
@@ -38,6 +42,7 @@ setInterval(() => {
   transition:
     font-size 0.5s ease-in-out,
     transform 0.5s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (min-width: 1024px) {
