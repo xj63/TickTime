@@ -6,6 +6,7 @@ body {
 }
 
 html {
+  touch-action: none;
   background-color: #fff;
   color: #000;
 }
